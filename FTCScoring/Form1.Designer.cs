@@ -54,7 +54,8 @@ namespace FTCScoring
             this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.header = new System.Windows.Forms.Panel();
+            this.exportBtn = new System.Windows.Forms.Button();
             this.mainScrn = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.scrnTwoBtn = new System.Windows.Forms.Button();
@@ -112,15 +113,29 @@ namespace FTCScoring
             this.timerStop = new System.Windows.Forms.Button();
             this.label33 = new System.Windows.Forms.Label();
             this.transitions = new System.Windows.Forms.Timer(this.components);
-            this.panel7 = new System.Windows.Forms.Panel();
             this.axAcroPDF1 = new AxAcroPDFLib.AxAcroPDF();
+            this.pdfScores = new System.Windows.Forms.Panel();
+            this.button25 = new System.Windows.Forms.Button();
+            this.mainPanel = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label34 = new System.Windows.Forms.Label();
+            this.minLabel = new System.Windows.Forms.Label();
+            this.btnMinM = new System.Windows.Forms.Button();
+            this.btnMinP = new System.Windows.Forms.Button();
+            this.majLabel = new System.Windows.Forms.Label();
+            this.btnMM = new System.Windows.Forms.Button();
+            this.btnMP = new System.Windows.Forms.Button();
+            this.label37 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.header.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).BeginInit();
+            this.pdfScores.SuspendLayout();
+            this.mainPanel.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -138,7 +153,7 @@ namespace FTCScoring
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(139, 66);
+            this.label2.Location = new System.Drawing.Point(120, 5);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 25);
@@ -168,7 +183,7 @@ namespace FTCScoring
             this.panel1.Controls.Add(this.checkBox2);
             this.panel1.Controls.Add(this.checkBox1);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(16, 95);
+            this.panel1.Location = new System.Drawing.Point(13, 34);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(297, 263);
@@ -387,18 +402,34 @@ namespace FTCScoring
             this.label3.TabIndex = 4;
             this.label3.Text = "HighGoal x12";
             // 
-            // panel2
+            // header
             // 
-            this.panel2.BackColor = System.Drawing.Color.Maroon;
-            this.panel2.Controls.Add(this.mainScrn);
-            this.panel2.Controls.Add(this.panel6);
-            this.panel2.Controls.Add(this.scrnTwoBtn);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Location = new System.Drawing.Point(-9, -5);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1091, 68);
-            this.panel2.TabIndex = 5;
+            this.header.BackColor = System.Drawing.Color.Maroon;
+            this.header.Controls.Add(this.exportBtn);
+            this.header.Controls.Add(this.mainScrn);
+            this.header.Controls.Add(this.panel6);
+            this.header.Controls.Add(this.scrnTwoBtn);
+            this.header.Controls.Add(this.label1);
+            this.header.Location = new System.Drawing.Point(-9, -5);
+            this.header.Margin = new System.Windows.Forms.Padding(4);
+            this.header.Name = "header";
+            this.header.Size = new System.Drawing.Size(1091, 68);
+            this.header.TabIndex = 5;
+            // 
+            // exportBtn
+            // 
+            this.exportBtn.BackColor = System.Drawing.Color.Maroon;
+            this.exportBtn.FlatAppearance.BorderColor = System.Drawing.Color.Maroon;
+            this.exportBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exportBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exportBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.exportBtn.Location = new System.Drawing.Point(461, -2);
+            this.exportBtn.Name = "exportBtn";
+            this.exportBtn.Size = new System.Drawing.Size(117, 83);
+            this.exportBtn.TabIndex = 21;
+            this.exportBtn.Text = "Export Match";
+            this.exportBtn.UseVisualStyleBackColor = false;
+            this.exportBtn.Click += new System.EventHandler(this.exportBtn_Click);
             // 
             // mainScrn
             // 
@@ -453,7 +484,7 @@ namespace FTCScoring
             this.panel3.Controls.Add(this.button14);
             this.panel3.Controls.Add(this.label27);
             this.panel3.Controls.Add(this.button13);
-            this.panel3.Location = new System.Drawing.Point(16, 395);
+            this.panel3.Location = new System.Drawing.Point(13, 331);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(297, 150);
@@ -594,7 +625,7 @@ namespace FTCScoring
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(120, 367);
+            this.label9.Location = new System.Drawing.Point(117, 303);
             this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(73, 25);
@@ -629,7 +660,7 @@ namespace FTCScoring
             this.panel4.Controls.Add(this.checkBox5);
             this.panel4.Controls.Add(this.checkBox6);
             this.panel4.Controls.Add(this.label13);
-            this.panel4.Location = new System.Drawing.Point(377, 94);
+            this.panel4.Location = new System.Drawing.Point(370, 34);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(297, 327);
@@ -901,7 +932,7 @@ namespace FTCScoring
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(467, 65);
+            this.label14.Location = new System.Drawing.Point(460, 5);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(100, 25);
@@ -912,12 +943,12 @@ namespace FTCScoring
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(884, 512);
+            this.label15.Location = new System.Drawing.Point(897, 450);
             this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(90, 29);
+            this.label15.Size = new System.Drawing.Size(105, 29);
             this.label15.TabIndex = 10;
-            this.label15.Text = "Total: ";
+            this.label15.Text = "Total: 0";
             // 
             // timer1
             // 
@@ -980,7 +1011,7 @@ namespace FTCScoring
             this.panel5.Controls.Add(this.timerStart);
             this.panel5.Controls.Add(this.ringAmount);
             this.panel5.Controls.Add(this.timeLabel);
-            this.panel5.Location = new System.Drawing.Point(725, 94);
+            this.panel5.Location = new System.Drawing.Point(715, 34);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(298, 215);
             this.panel5.TabIndex = 17;
@@ -1019,7 +1050,7 @@ namespace FTCScoring
             // 
             this.label33.AutoSize = true;
             this.label33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label33.Location = new System.Drawing.Point(765, 65);
+            this.label33.Location = new System.Drawing.Point(755, 5);
             this.label33.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label33.Name = "label33";
             this.label33.Size = new System.Drawing.Size(219, 25);
@@ -1030,16 +1061,6 @@ namespace FTCScoring
             // 
             this.transitions.Interval = 1000;
             this.transitions.Tick += new System.EventHandler(this.transitions_Tick);
-            // 
-            // panel7
-            // 
-            this.panel7.Controls.Add(this.axAcroPDF1);
-            this.panel7.Location = new System.Drawing.Point(-6, 62);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(1074, 493);
-            this.panel7.TabIndex = 19;
-            this.panel7.Visible = false;
-            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // axAcroPDF1
             // 
@@ -1053,23 +1074,164 @@ namespace FTCScoring
             this.axAcroPDF1.Size = new System.Drawing.Size(900, 496);
             this.axAcroPDF1.TabIndex = 0;
             // 
+            // pdfScores
+            // 
+            this.pdfScores.Controls.Add(this.axAcroPDF1);
+            this.pdfScores.Location = new System.Drawing.Point(-6, 62);
+            this.pdfScores.Name = "pdfScores";
+            this.pdfScores.Size = new System.Drawing.Size(1074, 493);
+            this.pdfScores.TabIndex = 19;
+            this.pdfScores.Visible = false;
+            this.pdfScores.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
+            // 
+            // button25
+            // 
+            this.button25.Location = new System.Drawing.Point(744, 450);
+            this.button25.Name = "button25";
+            this.button25.Size = new System.Drawing.Size(117, 29);
+            this.button25.TabIndex = 20;
+            this.button25.Text = "Reset Scores";
+            this.button25.UseVisualStyleBackColor = true;
+            this.button25.Click += new System.EventHandler(this.button25_Click_2);
+            // 
+            // mainPanel
+            // 
+            this.mainPanel.Controls.Add(this.panel2);
+            this.mainPanel.Controls.Add(this.label15);
+            this.mainPanel.Controls.Add(this.label9);
+            this.mainPanel.Controls.Add(this.panel3);
+            this.mainPanel.Controls.Add(this.panel1);
+            this.mainPanel.Controls.Add(this.label14);
+            this.mainPanel.Controls.Add(this.panel4);
+            this.mainPanel.Controls.Add(this.panel5);
+            this.mainPanel.Controls.Add(this.label33);
+            this.mainPanel.Controls.Add(this.button25);
+            this.mainPanel.Controls.Add(this.label2);
+            this.mainPanel.Location = new System.Drawing.Point(0, 62);
+            this.mainPanel.Name = "mainPanel";
+            this.mainPanel.Size = new System.Drawing.Size(1069, 501);
+            this.mainPanel.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.minLabel);
+            this.panel2.Controls.Add(this.label34);
+            this.panel2.Controls.Add(this.btnMinM);
+            this.panel2.Controls.Add(this.label38);
+            this.panel2.Controls.Add(this.btnMinP);
+            this.panel2.Controls.Add(this.label37);
+            this.panel2.Controls.Add(this.majLabel);
+            this.panel2.Controls.Add(this.btnMP);
+            this.panel2.Controls.Add(this.btnMM);
+            this.panel2.Location = new System.Drawing.Point(325, 371);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(401, 99);
+            this.panel2.TabIndex = 20;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.Location = new System.Drawing.Point(-2, 0);
+            this.label34.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(92, 25);
+            this.label34.TabIndex = 21;
+            this.label34.Text = "Penalties";
+            this.label34.Click += new System.EventHandler(this.label34_Click);
+            // 
+            // minLabel
+            // 
+            this.minLabel.AutoSize = true;
+            this.minLabel.Location = new System.Drawing.Point(48, 62);
+            this.minLabel.Name = "minLabel";
+            this.minLabel.Size = new System.Drawing.Size(16, 17);
+            this.minLabel.TabIndex = 43;
+            this.minLabel.Text = "0";
+            this.minLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnMinM
+            // 
+            this.btnMinM.Location = new System.Drawing.Point(19, 60);
+            this.btnMinM.Name = "btnMinM";
+            this.btnMinM.Size = new System.Drawing.Size(23, 23);
+            this.btnMinM.TabIndex = 42;
+            this.btnMinM.Text = "-";
+            this.btnMinM.UseVisualStyleBackColor = true;
+            this.btnMinM.Click += new System.EventHandler(this.btnMinM_Click);
+            // 
+            // btnMinP
+            // 
+            this.btnMinP.Location = new System.Drawing.Point(70, 59);
+            this.btnMinP.Name = "btnMinP";
+            this.btnMinP.Size = new System.Drawing.Size(23, 23);
+            this.btnMinP.TabIndex = 41;
+            this.btnMinP.Text = "+";
+            this.btnMinP.UseVisualStyleBackColor = true;
+            this.btnMinP.Click += new System.EventHandler(this.btnMinP_Click);
+            // 
+            // majLabel
+            // 
+            this.majLabel.AutoSize = true;
+            this.majLabel.Location = new System.Drawing.Point(48, 30);
+            this.majLabel.Name = "majLabel";
+            this.majLabel.Size = new System.Drawing.Size(16, 17);
+            this.majLabel.TabIndex = 40;
+            this.majLabel.Text = "0";
+            this.majLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnMM
+            // 
+            this.btnMM.Location = new System.Drawing.Point(19, 28);
+            this.btnMM.Name = "btnMM";
+            this.btnMM.Size = new System.Drawing.Size(23, 23);
+            this.btnMM.TabIndex = 39;
+            this.btnMM.Text = "-";
+            this.btnMM.UseVisualStyleBackColor = true;
+            this.btnMM.Click += new System.EventHandler(this.btnMM_Click);
+            // 
+            // btnMP
+            // 
+            this.btnMP.Location = new System.Drawing.Point(70, 27);
+            this.btnMP.Name = "btnMP";
+            this.btnMP.Size = new System.Drawing.Size(23, 23);
+            this.btnMP.TabIndex = 38;
+            this.btnMP.Text = "+";
+            this.btnMP.UseVisualStyleBackColor = true;
+            this.btnMP.Click += new System.EventHandler(this.btnMP_Click);
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label37.Location = new System.Drawing.Point(100, 60);
+            this.label37.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(85, 20);
+            this.label37.TabIndex = 37;
+            this.label37.Text = "Minor: -10";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label38.Location = new System.Drawing.Point(100, 28);
+            this.label38.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(85, 20);
+            this.label38.TabIndex = 36;
+            this.label38.Text = "Major: -30";
+            // 
             // Scoring
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(1067, 554);
-            this.Controls.Add(this.panel7);
-            this.Controls.Add(this.label33);
-            this.Controls.Add(this.panel5);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.panel4);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.header);
+            this.Controls.Add(this.mainPanel);
+            this.Controls.Add(this.pdfScores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1078,18 +1240,21 @@ namespace FTCScoring
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.header.ResumeLayout(false);
+            this.header.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axAcroPDF1)).EndInit();
+            this.pdfScores.ResumeLayout(false);
+            this.mainPanel.ResumeLayout(false);
+            this.mainPanel.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -1103,7 +1268,7 @@ namespace FTCScoring
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox checkBox2;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel header;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label6;
@@ -1175,8 +1340,21 @@ namespace FTCScoring
         private System.Windows.Forms.Timer transitions;
         private System.Windows.Forms.Label curPeriod;
         private System.Windows.Forms.Label timeUntil;
-        private System.Windows.Forms.Panel panel7;
         private AxAcroPDFLib.AxAcroPDF axAcroPDF1;
+        private System.Windows.Forms.Panel pdfScores;
+        private System.Windows.Forms.Button button25;
+        private System.Windows.Forms.Panel mainPanel;
+        private System.Windows.Forms.Button exportBtn;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label minLabel;
+        private System.Windows.Forms.Button btnMinM;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Button btnMinP;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label majLabel;
+        private System.Windows.Forms.Button btnMP;
+        private System.Windows.Forms.Button btnMM;
     }
 }
 

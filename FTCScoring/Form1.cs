@@ -7,11 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Excel = Microsoft.Office.Interop.Excel;           // EXCEL APPLICATION.
 
 namespace FTCScoring
 {
     public partial class Scoring : Form
     {
+ 
         String score;
         Random rand = new Random();
         int seconds = 30;
@@ -22,6 +24,8 @@ namespace FTCScoring
         int autoScore = 0;
         int teleScore = 0;
         int endScore = 0;
+        int penaltyScore = 0;
+        int tempPenalty = 0;
         int totalScore = 0;
 
         //Auto
@@ -42,6 +46,10 @@ namespace FTCScoring
         int prevMidEnd = 0;
         int prevHighEnd = 0;
 
+        //penalties
+        int major = 0;
+        int minor = 0;
+
         public Scoring()
         {
             InitializeComponent();
@@ -58,14 +66,21 @@ namespace FTCScoring
             label5.Text = "AutoScore: " + autoScore;
             label6.Text = "TeleScore: " + teleScore;
             label11.Text = "EndScore: " + endScore;
-            totalScore = autoScore + teleScore + endScore;
+            totalScore = autoScore + teleScore + endScore + penaltyScore;
+            penaltyHandler();
             label15.Text = "Total: " + totalScore;
         }
-        private void checkLessThan(TextBox input)
+        private void penaltyHandler()
         {
-            if (input.TextLength < 1)
+            if (totalScore > 0 && tempPenalty > 0)
             {
-                score = "0";
+                totalScore += tempPenalty;
+                tempPenalty = 0;
+            }
+            if (totalScore < 0)
+            {
+                tempPenalty += totalScore;
+                totalScore = 0;
             }
 
         }
@@ -107,10 +122,8 @@ namespace FTCScoring
             }
             updateScores();
         }
-
-        private void Form1_Load(object sender, EventArgs e)
+        public void disableButtons()
         {
-            this.MaximizeBox = false;
             button2.Enabled = false;
             button3.Enabled = false;
             button5.Enabled = false;
@@ -123,7 +136,15 @@ namespace FTCScoring
             button19.Enabled = false;
             button21.Enabled = false;
             button23.Enabled = false;
+            btnMinM.Enabled = false;
+            btnMM.Enabled = false;
             timerStop.Enabled = false;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.MaximizeBox = false;
+            disableButtons();
             mainScrn.BackColor = System.Drawing.Color.DarkRed;
             this.TopMost = true;
             Application.DoEvents();
@@ -487,6 +508,7 @@ namespace FTCScoring
                 timeLabel.Text = "Time: 2:30";
                 timerStop.Enabled = false;
                 timerStart.Enabled = true;
+                randRings.Enabled = true;
             }
         }
 
@@ -524,7 +546,8 @@ namespace FTCScoring
 
         private void button25_Click(object sender, EventArgs e)
         {
-            panel7.Visible = true;
+            pdfScores.Visible = true;
+            pdfScores.BringToFront();
             String tmpPdfFilePath = System.IO.Path.Combine(System.IO.Path.GetTempPath(), String.Format("{0}.pdf", System.IO.Path.GetTempFileName()));
             System.IO.File.WriteAllBytes(tmpPdfFilePath, Properties.Resources.scoring);
             axAcroPDF1.LoadFile(tmpPdfFilePath);
@@ -534,7 +557,8 @@ namespace FTCScoring
 
         private void mainScrn_Click(object sender, EventArgs e)
         {
-            panel7.Visible = false;
+            pdfScores.Visible = false;
+            pdfScores.SendToBack();
             scrnTwoBtn.BackColor = System.Drawing.Color.Maroon;
             mainScrn.BackColor = System.Drawing.Color.DarkRed;
         }
@@ -570,6 +594,81 @@ namespace FTCScoring
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void button25_Click_2(object sender, EventArgs e)
+        {
+            this.Controls.Clear();
+            this.InitializeComponent();
+            autoScore = 0;
+            teleScore = 0;
+            endScore = 0;
+            penaltyScore = 0;
+            tempPenalty = 0;
+            totalScore = 0;
+
+            //Auto
+            prevHighAuto = 0;
+            prevMidAuto = 0;
+            prevLowAuto = 0;
+            prevPowerAuto = 0;
+
+            //Tele
+            prevHighTele = 0;
+            prevMidTele = 0;
+            prevLowTele = 0;
+
+            //End Game
+            prevRings = 0;
+            prevPower = 0;
+            prevLowEnd = 0;
+            prevMidEnd = 0;
+            prevHighEnd = 0;
+
+            //penalties
+            major = 0;
+            minor = 0;
+
+            disableButtons();
+            mainScrn.BackColor = System.Drawing.Color.DarkRed;
+        }
+
+        private void exportBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label34_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMP_Click(object sender, EventArgs e)
+        {
+            major++;
+            penaltyScore -= 30;
+            addScore(btnMM, major, majLabel);
+        }
+
+        private void btnMM_Click(object sender, EventArgs e)
+        {
+            major--;
+            penaltyScore += 30;
+            subtractScore(btnMM, major, majLabel);
+        }
+
+        private void btnMinP_Click(object sender, EventArgs e)
+        {
+            minor++;
+            penaltyScore -= 10;
+            addScore(btnMinM, minor, minLabel);
+        }
+
+        private void btnMinM_Click(object sender, EventArgs e)
+        {
+            minor--;
+            penaltyScore += 10;
+            subtractScore(btnMinM, minor, minLabel);
         }
     }
 
